@@ -3,6 +3,7 @@ PROJECT_NAME := 2UART_ver1.0
 LIB_NAMES := libserialport-dev
 
 # Define compiler flags
+CC := gcc
 CFLAGS := -Wall -Wextra -pedantic -std=c11
 
 all: $(PROJECT_NAME)
@@ -13,9 +14,16 @@ install:
 	sudo apt-get install $(LIB_NAMES)
 
 # Compile the project with libserialport
-$(PROJECT_NAME): main.c
-	gcc $(CFLAGS) main.c -lserialport -o $(PROJECT_NAME)
+$(PROJECT_NAME): main.o
+	$(CC) $(CFLAGS) main.c -o $(PROJECT_NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
 
 # Clean up object files and executable
 clean:
 	rm -f $(PROJECT_NAME)
+	rm -f *.o
+
+# sudo screen /dev/USBtty0 115200
+# sudo screen /dev/USBtty1 115200
