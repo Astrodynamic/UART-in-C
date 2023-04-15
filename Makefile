@@ -27,3 +27,6 @@ clean:
 
 # sudo screen /dev/USBtty0 115200
 # sudo screen /dev/USBtty1 115200
+# stty -F /dev/USBtty0 115200
+# cat /dev/USBtty0
+# hexdump -C /dev/USBtty0 
