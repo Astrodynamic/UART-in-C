@@ -55,7 +55,6 @@ int main() {
   serial_1.c_cflag &= ~CSTOPB;
   serial_1.c_cflag &= ~CSIZE;
   serial_1.c_cflag |= CS8;
-  serial_1.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
   tcsetattr(fd_com_1, TCSANOW, &serial_1);
 
   fd_com_2 = open(device_2, O_RDWR | O_NOCTTY | O_NONBLOCK);
@@ -72,7 +71,6 @@ int main() {
   serial_2.c_cflag &= ~PARENB;
   serial_2.c_cflag &= ~CSTOPB;
   serial_2.c_cflag &= ~CSIZE;
-  serial_2.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
   tcsetattr(fd_com_2, TCSANOW, &serial_2);
 
   // Создаем системную очередь
